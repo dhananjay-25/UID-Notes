@@ -632,91 +632,295 @@
                 `
             },
             {
-                title: "Psychology & Perception",
-                summary: "Memory, Attention, and Gestalt Principles.",
+                title: "Memory & Attention",
+                summary: "Cognitive Limits, STM vs LTM, and Selective Attention.",
                 content: `
-                    <h3>Memory Limits</h3>
+                    <h3>1. Short-term Memory (STM)</h3>
                     <ul>
-                        <li><strong>Short Term (STM):</strong> Capacity is tiny (3-4 items). Decays in seconds. <em>Design Rule:</em> Don't force users to remember data from one screen to the next.</li>
-                        <li><strong>Long Term (LTM):</strong> Huge capacity but slow to encode. Relies on structure and familiarity.</li>
+                        <li><strong>Capacity:</strong> Extremely limited (3–4 items).</li>
+                        <li><strong>Duration:</strong> Seconds.</li>
+                        <li><strong>Constraint:</strong> Easily overloaded. <em>Design Rule:</em> Minimize memory load. Don't make users remember data from one screen to the next.</li>
+                    </ul>
+
+                    <h3>2. Long-term Memory (LTM)</h3>
+                    <ul>
+                        <li><strong>Capacity:</strong> Huge.</li>
+                        <li><strong>Encoding:</strong> Slow.</li>
+                        <li><strong>Requirement:</strong> Needs organization, structure, and familiarity.</li>
+                    </ul>
+
+                    <h3>Implications for UI</h3>
+                    <ul>
+                        <li>Organize information logically.</li>
+                        <li>Make structure visible.</li>
+                        <li>Keep related items close.</li>
+                        <li>Avoid forcing recall; use recognition instead.</li>
                     </ul>
 
                     <h3>Attention</h3>
-                    <p>Attention is selective. (The Gorilla Experiment: People counting ball passes missed a gorilla walking by). Don't clutter interfaces; users will miss even "obvious" things if they are focused on a task.</p>
-
-                    <h3>Gestalt Principles (Perception)</h3>
+                    <p>People can focus on very few things at once. Attention is <strong>selective</strong>. <br><strong>The Gorilla Experiment:</strong> People counting basketball passes completely miss a gorilla walking through the frame because they are focused on the ball. <br><strong>Lesson:</strong> Selective attention blinds users. Don't clutter interfaces. Highlight only what is important.</p>
+                `
+            },
+            {
+                title: "Perception & Visualization (Gestalt)",
+                summary: "The 11 perceptual characteristics based on Gestalt psychology.",
+                content: `
+                    <h3>The 11 Perceptual Characteristics</h3>
+                    <ol>
+                        <li><strong>Proximity:</strong> Nearby elements look related.</li>
+                        <li><strong>Similarity:</strong> Similar-looking items (shape/color) look grouped.</li>
+                        <li><strong>Pattern Matching:</strong> We recognize shapes even if resized.</li>
+                        <li><strong>Succinctness (Prägnanz):</strong> We prefer simple shapes.</li>
+                        <li><strong>Closure:</strong> We "fill in" incomplete shapes (e.g., dotted circle).</li>
+                        <li><strong>Unity:</strong> Closed shapes appear grouped.</li>
+                        <li><strong>Continuity:</strong> Lines extend themselves mentally; the eye follows curves.</li>
+                        <li><strong>Balance:</strong> People prefer symmetric, stable layouts.</li>
+                        <li><strong>Expectancies:</strong> We see what we <em>expect</em> to see, not necessarily what is there.</li>
+                        <li><strong>Context Effects:</strong> Surroundings influence perception (e.g., color perception changes based on background).</li>
+                        <li><strong>Signal vs Noise:</strong> If everything is loud/bold, nothing is clear.</li>
+                    </ol>
+                    <h3>UI Implications</h3>
+                    <p>Use these tendencies to create clear grouping, hierarchy, and logical organization. Aim for easy scanning and minimal visual noise.</p>
+                `
+            },
+            {
+                title: "Errors: Slips vs. Mistakes",
+                summary: "Understanding the root cause of user errors.",
+                content: `
+                    <h3>Slips (Action Errors)</h3>
+                    <p><strong>Definition:</strong> Right goal, wrong action. Occurs when user intends to do one thing but does another.</p>
                     <ul>
-                        <li><strong>Proximity:</strong> Things close together are perceived as a group.</li>
-                        <li><strong>Similarity:</strong> Things that look alike (color, shape) are perceived as related.</li>
-                        <li><strong>Closure:</strong> The brain "fills in" gaps to see complete shapes.</li>
-                        <li><strong>Continuity:</strong> The eye follows lines and curves.</li>
-                        <li><strong>Symmetry/Balance:</strong> People prefer symmetric, stable layouts.</li>
-                        <li><strong>Figure/Ground:</strong> Distinguishing the foreground from the background.</li>
+                        <li><strong>Examples:</strong> Clicking the wrong button, typing a typo, putting hand soap on a toothbrush.</li>
+                        <li><strong>Prevention:</strong> Provide constraints, suggestions, defaults, and forgiving formatting (undo, auto-correct).</li>
+                    </ul>
+
+                    <h3>Mistakes (Understanding Errors)</h3>
+                    <p><strong>Definition:</strong> Wrong goal, wrong understanding. The user formed an incorrect mental model.</p>
+                    <ul>
+                        <li><strong>Examples:</strong> Misinterpreting a car warning light, adding air to a tire when oil pressure is low.</li>
+                        <li><strong>Prevention:</strong> Better visibility, clear communication of system state, improved conceptual models.</li>
                     </ul>
                 `
             },
             {
-                title: "Errors & Norman's Principles",
-                summary: "Slips vs Mistakes & The 4 Pillars.",
+                title: "Conceptual Models",
+                summary: "Aligning the User Model with the Design Model.",
                 content: `
-                    <h3>Error Types</h3>
+                    <h3>The Framework</h3>
                     <ul>
-                        <li><strong>Slips (Action Errors):</strong> Right goal, wrong action. (e.g., Typo, clicking wrong button). <em>Fix:</em> Undo, Auto-correct, Spacing buttons.</li>
-                        <li><strong>Mistakes (Mental Model Errors):</strong> Wrong goal. The user misunderstood how the system works. (e.g., Putting oil in the tire valve). <em>Fix:</em> Better visibility, clearer labels, improved conceptual models.</li>
+                        <li><strong>Design Model:</strong> How the designer understands the system.</li>
+                        <li><strong>User Model:</strong> How the user thinks the system works.</li>
+                        <li><strong>System Image:</strong> The visible controls, feedback, and labels that the user interacts with.</li>
                     </ul>
+                    <p><strong>The Goal:</strong> The User Model should align with the Design Model. The System Image must clearly convey the correct model.</p>
 
-                    <h3>Conceptual Models</h3>
-                    <p>User forms a mental model based on the "System Image" (what they see). Goal: Align User Model with Design Model.</p>
+                    <h3>Bad Example: Refrigerator Temperature</h3>
+                    <p>Two controls (labeled 1-5) look independent (Freezer vs Fridge). <br><strong>Reality:</strong> There is only one cooling unit and a valve distributing air. The controls are interdependent. <br><strong>Result:</strong> Users form a wrong mental model and can't set the temperature correctly.</p>
+                    
+                    <h3>Lessons</h3>
                     <ul>
-                        <li><strong>Gulf of Execution:</strong> "How do I do it?" (Gap between goal and system).</li>
-                        <li><strong>Gulf of Evaluation:</strong> "What happened?" (Gap between system state and understanding).</li>
+                        <li>Make system structure visible.</li>
+                        <li>Provide clear mappings.</li>
+                        <li>Give immediate feedback.</li>
                     </ul>
-
-                    <h3>Don Norman's Design Principles</h3>
+                `
+            },
+            {
+                title: "Gulfs of Execution & Evaluation",
+                summary: "Bridging the gap between user and system.",
+                content: `
+                    <h3>Stages of Action</h3>
                     <ol>
-                        <li><strong>Visibility:</strong> Can I see what I can do? (Hidden gestures = Bad).</li>
-                        <li><strong>Feedback:</strong> Does the system react? (Loading bars, click sounds). Immediate and visible.</li>
-                        <li><strong>Constraints:</strong> Prevent errors by restricting invalid actions (Grayed out buttons, Date pickers).</li>
-                        <li><strong>Mapping:</strong> Natural relationship between control and effect (Stove knobs aligned with burners).</li>
+                        <li>Form goal</li>
+                        <li>Form intention</li>
+                        <li>Specify actions</li>
+                        <li>Execute actions</li>
+                        <li>Perceive world state</li>
+                        <li>Interpret world state</li>
+                        <li>Evaluate progress</li>
                     </ol>
+
+                    <h3>Gulf of Execution</h3>
+                    <p><strong>Question:</strong> "How do I do it?" <br><strong>Example:</strong> Which light switch controls the front lights? <br><strong>Design Fix:</strong> Clear affordances, mappings, and signifiers.</p>
+
+                    <h3>Gulf of Evaluation</h3>
+                    <p><strong>Question:</strong> "What happened?" <br><strong>Example:</strong> File names (IMG_001.jpg) give no info about image content. User can't interpret the state. <br><strong>Design Fix:</strong> Better feedback and visualization (thumbnails).</p>
+                `
+            },
+            {
+                title: "Design Principles (Don Norman)",
+                summary: "Visibility, Feedback, Mappings, Constraints.",
+                content: `
+                    <h3>1. Visibility</h3>
+                    <p>Make controls, status, and options visible. <br><em>Bad:</em> Hidden gestures or features buried in menus. <br><em>Good:</em> Gmail "Compose" button.</p>
+
+                    <h3>2. Mappings</h3>
+                    <p>Relationship between control and effect should be natural. <br><em>Good:</em> Stove knobs arranged in the same geometry as burners. <br><em>Bad:</em> Ceiling fan with two identical pull strings.</p>
+
+                    <h3>3. Feedback</h3>
+                    <p>System responds to user actions visibly and immediately. <br><em>Examples:</em> Hover effects, autocomplete, progress bars, click sounds.</p>
+
+                    <h3>4. Constraints</h3>
+                    <p>Restrict actions to prevent errors. <br><em>Examples:</em> Grayed-out menu items, dropdown lists (instead of free text), physical shape of connectors (USB-C).</p>
+                `
+            },
+            {
+                title: "Social Psychology & STS",
+                summary: "Challenges in Socio-Technical Systems (Wikipedia, eBay).",
+                content: `
+                    <h3>Core Challenges (Kraut & Resnick)</h3>
+                    <ol>
+                        <li><strong>Critical Mass:</strong> New systems lack content -> hard to attract users.</li>
+                        <li><strong>Attracting Contributors:</strong> Need skilled, motivated members.</li>
+                        <li><strong>Commitment:</strong> Keeping members engaged long-term.</li>
+                        <li><strong>Encouraging Contribution:</strong> Systems depend on user-created content.</li>
+                        <li><strong>Regulating Misbehavior:</strong> Trolls, spam, harassment.</li>
+                    </ol>
+
+                    <h3>Role of Feedback</h3>
+                    <ul>
+                        <li><strong>Positive Feedback:</strong> Encourages participation but may reduce effort (resting on laurels).</li>
+                        <li><strong>Negative Feedback:</strong> Discouraging, but can increase effort to meet standards. Systems need a strategic mix.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "High-Level Models",
+                summary: "Distributed Cognition, Activity Theory, Situated Action.",
+                content: `
+                    <h3>1. Distributed Cognition (DCog)</h3>
+                    <ul>
+                        <li>Cognition is not just in the head; it is spread across people and tools.</li>
+                        <li><strong>Example:</strong> A pilot, co-pilot, and instrument panel form a single cognitive unit. A shopping list is an external memory tool.</li>
+                    </ul>
+
+                    <h3>2. Activity Theory</h3>
+                    <ul>
+                        <li>Focuses on the "Activity" (Goal) carried out by a Subject using Tools within a Community.</li>
+                        <li>Emphasizes that systems evolve over time and are shaped by social/cultural context.</li>
+                    </ul>
+
+                    <h3>3. Situated Action</h3>
+                    <ul>
+                        <li>People improvise. Plans are often retrospective explanations ("I planned to do X") rather than step-by-step guides.</li>
+                        <li>Human action is contextual, dynamic, and emergent based on the situation.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Interface Critiques",
+                summary: "Analysis of TripAdvisor, Amazon, and Gmail+SwiftKey.",
+                content: `
+                    <h3>1. TripAdvisor</h3>
+                    <ul>
+                        <li><strong>Visibility:</strong> Search bar and filters are prominent.</li>
+                        <li><strong>Feedback:</strong> Autocomplete suggestions confirm input. Results update dynamically.</li>
+                        <li><strong>Constraints:</strong> Date pickers prevent invalid dates.</li>
+                    </ul>
+
+                    <h3>2. Amazon Product Page</h3>
+                    <ul>
+                        <li><strong>Visibility:</strong> Key product info (Price, Image) is central.</li>
+                        <li><strong>Feedback:</strong> Hovering over thumbnails updates the main image instantly.</li>
+                        <li><strong>Constraints:</strong> Quantity selector limits choices to valid numbers. Unavailable colors are disabled.</li>
+                    </ul>
+
+                    <h3>3. Gmail + SwiftKey</h3>
+                    <ul>
+                        <li><strong>Visibility:</strong> "Compose" is obvious. Placeholders guide input.</li>
+                        <li><strong>Feedback:</strong> Suggested contacts appear as you type. SwiftKey predicts words (even from typos).</li>
+                        <li><strong>Memory Support:</strong> Surfaces frequent contacts so users don't have to recall email addresses.</li>
+                    </ul>
                 `
             }
         ],
         m4: [
             {
-                title: "Don Norman Interview",
-                summary: "Observations, Future Tech, and Automation.",
+                title: "Don Norman & Human-Centered Design",
+                summary: "The core philosophy: Design for real people, not logic.",
                 content: `
-                    <h3>Observe, Don't Just Ask</h3>
-                    <p>Users often lie or don't know what they want. Watch for "hacks" (like taping instructions to a wall)—these reveal design failures. Design for real people, not logical engineers.</p>
+                    <h3>1. Who is Don Norman?</h3>
+                    <p>Author of <em>The Design of Everyday Things</em> and co-founder of the Nielsen Norman Group. This interview is a "capstone" reflection on the evolution of HCI.</p>
 
-                    <h3>Iterative vs. Visionary Design</h3>
-                    <p>Both are needed. <br><strong>Iterative:</strong> Hill-climbing. Makes things better step-by-step (Usability Engineering). <br><strong>Visionary:</strong> Radical jumps (like the iPhone). Often initially flawed but transformative (Design-led).</p>
+                    <h3>2. The High-Level Thesis</h3>
+                    <p><strong>Early Tech:</strong> Built by engineers for engineers. Focused on "what it can do," ignoring human behavior. Result: Powerful but unusable.</p>
+                    <p><strong>The Shift:</strong> As tech became widespread, usability became a safety issue. Design must be <strong>human-centered</strong>: built for real people with emotions and limited memory, not "ideal" rational users.</p>
 
-                    <h3>The Future: Generative Design</h3>
-                    <p>Designers won't draw every line. They will set constraints and curate options generated by AI/ML algorithms. The role shifts from "creator" to "curator/conductor" of tools.</p>
-
-                    <h3>Automation & Vigilance</h3>
-                    <p>Regarding autonomous cars: The hard part isn't the driving; it's the <strong>handoff</strong>. Humans are terrible at "vigilance" (monitoring a machine). When the car fails, the human cannot react fast enough. Automation also changes human behavior (pedestrians expect cars to stop).</p>
-                    
-                    <h3>The Danger of "Wrong" Designers</h3>
-                    <p>Visual-only designers may create beautiful but unusable interfaces (e.g., hidden gestures). We need "Designer-Scientists" who understand cognition.</p>
+                    <h3>3. Observation vs. Asking</h3>
+                    <p>Don repeatedly stresses: <strong>Watch people, don't just ask them.</strong></p>
+                    <ul>
+                        <li>Users often rationalize their behavior or don't know why they struggle.</li>
+                        <li>Look for "hacks" (e.g., taping instructions to a wall, putting an object on the stairs to remember it). These hacks reveal design failures.</li>
+                        <li>Engineers judge users ("Why are they dumb?"). Designers accept natural behavior.</li>
+                    </ul>
                 `
             },
             {
-                title: "Design Commandments",
+                title: "Methodology: Iteration & Vision",
+                summary: "Two complementary approaches to design.",
+                content: `
+                    <h3>4. Two Design Modes</h3>
+                    <ul>
+                        <li><strong>Usability Engineering (Iterative):</strong> "Hill-climbing." You build, test, and refine. It finds local improvements and fixes usability bugs.</li>
+                        <li><strong>Design-Led (Visionary):</strong> Skilled designers imagine novel solutions users didn't know they needed (e.g., the original iPhone).</li>
+                    </ul>
+                    <p><strong>Don's View:</strong> Both are necessary. Sometimes you prototype to discover; sometimes you start with a vision and iterate to make it usable.</p>
+
+                    <h3>5. Prototyping ("Try it out")</h3>
+                    <p><strong>Example: Don's House Remodel.</strong> Architects suggested a second story. Don and his wife taped the floorplan on the ground and "acted out" living there (cooking, moving). They found major flaws before building. <br><strong>Modern Analogue:</strong> Virtual Reality (VR) allows designers to "walk" a space before a single brick is laid.</p>
+                `
+            },
+            {
+                title: "Future Tech & Tools",
+                summary: "Generative Design, 3D Printing, and AI.",
+                content: `
+                    <h3>7. Future Directions</h3>
+                    <ul>
+                        <li><strong>Generative Design (AI + ML):</strong> Designers won't draw every line. They will specify constraints (weight, cost, material) and let algorithms generate thousands of options.</li>
+                        <li><strong>The New Role:</strong> The designer becomes a <strong>curator</strong> or conductor, choosing the best variations and training the system.</li>
+                        <li><strong>3D Printing:</strong> Enables novel shapes (hollow, lightweight, strong) that were previously impossible to manufacture.</li>
+                    </ul>
+
+                    <h3>8. New Interfaces</h3>
+                    <p>VR, AR, and new sensors require fresh thinking. We are moving away from screens to "spatial interactions" and gestures.</p>
+
+                    <h3>9. The Digital Camera Lesson</h3>
+                    <p>Early digital cameras had terrible quality compared to film. Experts dismissed them. But they offered <em>convenience</em> (instant viewing, sharing). <br><strong>Moral:</strong> Early poor quality doesn't mean failure. Convenience often trumps quality initially.</p>
+                `
+            },
+            {
+                title: "Automation & The 'Wrong' Designers",
+                summary: "The dangers of autonomous cars and visual-only design.",
+                content: `
+                    <h3>10. Autonomous Cars</h3>
+                    <p>The problem isn't the driving; it's the <strong>handoff</strong>. Humans are terrible at "vigilance" (monitoring a machine doing a boring task). When the car fails, the human cannot react fast enough.</p>
+                    <ul>
+                        <li><strong>Behavioral Adaptation:</strong> Pedestrians might act recklessly if they assume autonomous cars will always stop.</li>
+                        <li><strong>Communication:</strong> How does a self-driving car signal intent to a pedestrian? (It can't wave).</li>
+                    </ul>
+
+                    <h3>11. The "Wrong" Designers</h3>
+                    <p>Many companies hire visual artists (Graphic Designers) who excel at aesthetics but lack cognitive science knowledge.</p>
+                    <p><strong>The Result:</strong> Beautiful but unusable interfaces (e.g., touchscreen gestures with no "signifiers" - you don't know where to swipe). Don advocates for <strong>Designer-Scientists</strong>.</p>
+                `
+            },
+            {
+                title: "UX Commandments & Takeaways",
                 summary: "The rules to live by.",
                 content: `
-                    <blockquote>"The fundamentals of human-centered design remain essential: observe, empathize, prototype, and make systems understandable."</blockquote>
+                    <h3>12. Don's Practical Commandments</h3>
                     <ul>
-                        <li><strong>Discoverability:</strong> Make possible actions clearly perceptible.</li>
-                        <li><strong>Feedback:</strong> Make system results visible and immediate.</li>
-                        <li><strong>Affordances:</strong> Objects should signal how they are used (A chair affords sitting).</li>
-                        <li><strong>Signifiers:</strong> Clues on where to touch/click (e.g., a "Push" sign).</li>
-                        <li><strong>Undo:</strong> Systems must be forgiving; easy to recover from mistakes.</li>
-                        <li><strong>Consistency:</strong> Avoid inventing new interactions unless absolutely necessary.</li>
-                        <li><strong>Constraints:</strong> Guide users and prevent errors.</li>
+                        <li><strong>Discoverability:</strong> Can I see what actions are possible?</li>
+                        <li><strong>Feedback:</strong> Is the system reacting visibly?</li>
+                        <li><strong>Affordances:</strong> Do objects look like they do what they do? (A handle affords pulling).</li>
+                        <li><strong>Signifiers:</strong> Clues on where to touch/click (e.g., a "Push" label).</li>
+                        <li><strong>Undo:</strong> Systems must be forgiving. Allow recovery from mistakes.</li>
+                        <li><strong>Consistency:</strong> Don't invent new interactions unless necessary (e.g., standard gestures).</li>
+                        <li><strong>Constraints:</strong> Guide users and prevent errors (e.g., graying out buttons).</li>
                     </ul>
+
+                    <h3>13. Closing Encouragement</h3>
+                    <p>The future is exciting. Designers must learn new tools (ML, Generative AI). But the fundamentals remain: <strong>Observe, Empathize, Prototype.</strong></p>
                 `
             }
         ]
