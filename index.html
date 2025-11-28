@@ -359,18 +359,24 @@
                     
                     <h3>Historical Context</h3>
                     <ul>
-                        <li><strong>Early Computing:</strong> Machines were expensive (millions/month), humans were cheap. The goal was to keep the machine busy. Efficiency > User Experience.</li>
-                        <li><strong>Modern Shift:</strong> Devices are personal. Usability is critical. Poor UI leads to financial disaster and safety risks.</li>
+                        <li><strong>Early Computing (Fortran/Cobol):</strong> Machines were expensive (millions/month), humans were cheap. The goal was to keep the machine busy. Efficiency > User Experience. Teams existed solely to feed paper into printers.</li>
+                        <li><strong>Modern Shift:</strong> Devices are personal (phones, watches). Usability is critical. Poor UI leads to financial disaster and safety risks.</li>
                     </ul>
 
-                    <h3>UI Design vs. CS</h3>
+                    <h3>UI Design vs. Traditional CS</h3>
                     <ul>
-                        <li><strong>CS Courses:</strong> Focus on "building software right" (efficiency, modularity, code).</li>
-                        <li><strong>UI Courses:</strong> Focus on "building the right software" (solving user problems).</li>
+                        <li><strong>CS Courses:</strong> Focus on "building software right" (efficiency, modularity, maintainable code).</li>
+                        <li><strong>UI Courses:</strong> Focus on "building the right software" (solving real user problems, matching user needs, usability).</li>
                     </ul>
 
                     <h3>Interdisciplinary Nature</h3>
-                    <p>UI draws from Psychology (human behavior), Design (graphics/industrial), and Engineering. <br><strong>Warning:</strong> Designers are not their users. You cannot guess; you must research.</p>
+                    <p>UI draws from:</p>
+                    <ul>
+                        <li><strong>Understanding Humans:</strong> Psychology, linguistics, anthropology.</li>
+                        <li><strong>Designing Technology:</strong> Interaction design, graphics, media arts.</li>
+                        <li><strong>Building Technology:</strong> CS, engineering.</li>
+                    </ul>
+                    <p><strong>Warning:</strong> Designers are not their users. You cannot guess; you must research (especially for elderly, children, or disabled users).</p>
                 `
             },
             {
@@ -378,27 +384,34 @@
                 summary: "Case studies: Waze, Therac-25, and Chrysler.",
                 content: `
                     <h3>Why Bad Design Matters</h3>
-                    <p>Poor UI is not just annoying; it can cause injury, death, and financial loss.</p>
+                    <p>Poor UI is not just annoying; it can cause financial loss, injury, and death. Design is about responsibility.</p>
 
                     <h3>1. Waze & The Wrong Address</h3>
                     <ul>
-                        <li><strong>Incident:</strong> An elderly couple in Brazil entered a duplicate street name. Waze routed them to a dangerous area where they were attacked.</li>
-                        <li><strong>Design Failure:</strong> Lack of context or "safety warnings" for high-risk destinations.</li>
-                        <li><strong>Lesson:</strong> <em>Heuristic #5: Error Prevention.</em> Systems should warn users of potential risks before they commit to an action.</li>
+                        <li><strong>Incident:</strong> An elderly couple in Brazil entered a street name into Waze. The street name existed in multiple locations. Waze routed them to a dangerous favela where they were attacked, and one was killed.</li>
+                        <li><strong>Design Failure:</strong> The system did not provide context or "safety warnings" for high-risk destinations. It treated all destinations as equal.</li>
+                        <li><strong>Lesson (Heuristic #5):</strong> <em>Error Prevention.</em> Systems should warn users of potential risks before they commit to an action. "Even better than good error messages is careful design that prevents problems."</li>
                     </ul>
 
                     <h3>2. Therac-25 Radiation Machine</h3>
                     <ul>
-                        <li><strong>Incident:</strong> A software bug caused massive radiation overdoses, killing 6 people.</li>
-                        <li><strong>Failures:</strong> Cryptic error messages ("Malfunction 54"), no visibility of the actual dose delivered, and a lack of hardware interlocks.</li>
+                        <li><strong>Incident:</strong> A radiation therapy machine in the 1980s gave massive overdoses, killing 6 people.</li>
+                        <li><strong>Design Failures:</strong>
+                            <ul>
+                                <li><strong>Cryptic Errors:</strong> "Malfunction 54" meant nothing to operators.</li>
+                                <li><strong>Visibility:</strong> Operators could not see the actual dose delivered; the screen showed "0".</li>
+                                <li><strong>No Hard Limits:</strong> Software allowed lethal inputs without hardware interlocks/safeguards.</li>
+                                <li><strong>No User Involvement:</strong> Technicians were not consulted in the design.</li>
+                            </ul>
+                        </li>
                         <li><strong>Lesson:</strong> Never rely on software alone for safety. Visibility of system state is life-saving.</li>
                     </ul>
 
-                    <h3>3. Chrysler Gear Shift</h3>
+                    <h3>3. Chrysler Gear Shift (Anton Yelchin)</h3>
                     <ul>
-                        <li><strong>Incident:</strong> Actor Anton Yelchin died when his Jeep rolled away.</li>
-                        <li><strong>Failure:</strong> The "Monostable" shifter always returned to the center. It relied only on lights to show "Park" vs "Neutral," lacking tactile feedback.</li>
-                        <li><strong>Lesson:</strong> Do not break established conventions (like gear positions) without extreme caution.</li>
+                        <li><strong>Incident:</strong> Actor Anton Yelchin died when his Jeep rolled away and pinned him.</li>
+                        <li><strong>Failure:</strong> The "Monostable" shifter always returned to the center position after a shift. It relied only on lights to show "Park" vs "Neutral," lacking the tactile feedback of a physical lever position.</li>
+                        <li><strong>Lesson:</strong> Do not break established conventions (like gear positions) without extreme caution. Consistency is safety.</li>
                     </ul>
                 `
             },
@@ -408,21 +421,22 @@
                 content: `
                     <h3>1. The Evolution of ATMs</h3>
                     <ul>
-                        <li><strong>The Problem:</strong> Early ATMs "swallowed" cards on error. Users were terrified of losing their cards.</li>
-                        <li><strong>The Innovation:</strong> Citibank introduced the "Dip" interface. You dip the card and pull it back. The machine never holds it.</li>
-                        <li><strong>Result:</strong> "The Citi Never Sleeps" campaign. Trust skyrocketed because the design removed fear.</li>
+                        <li><strong>The Problem (Early ATMs):</strong> Machines "swallowed" cards if the PIN was entered wrong 3 times. Users were terrified of losing their cards and bank access.</li>
+                        <li><strong>The Innovation:</strong> Citibank introduced the "Dip" interface. You dip the card and pull it back immediately. The machine never holds the card.</li>
+                        <li><strong>Result:</strong> "The Citi Never Sleeps" campaign. Market share exploded because the design removed fear and built trust.</li>
                     </ul>
 
                     <h3>2. Microsoft Office Ribbon</h3>
                     <ul>
-                        <li><strong>The Problem:</strong> Menus were too deep. Users couldn't find features.</li>
-                        <li><strong>Data-Driven Design:</strong> Analysis showed "Paste" was used 11% of the time, followed by Save, Copy, Undo, Bold.</li>
-                        <li><strong>The Solution:</strong> The "Paste" button was made huge. Design was based on <em>evidence</em>, not intuition.</li>
+                        <li><strong>The Problem:</strong> Menus were too deep. Users couldn't find features. Designers initially used "intuition" to guess what was important.</li>
+                        <li><strong>Data-Driven Design:</strong> Analysis showed "Paste" was used 11% of the time, followed by Save, Copy, Undo, Bold. These top 5 commands = 32% of usage.</li>
+                        <li><strong>The Solution:</strong> The "Paste" button was made huge (top left). Design was based on <em>evidence</em>, not intuition. The "Long Tail" of commands was organized but de-emphasized.</li>
                     </ul>
 
-                    <h3>3. International Children's Digital Library</h3>
+                    <h3>3. International Children's Digital Library (ICDL)</h3>
                     <ul>
-                        <li><strong>Insight:</strong> Kids don't search by Title/Author. They search by <em>Color</em> (Blue book), <em>Length</em> (Short), and <em>Characters</em> (Animals).</li>
+                        <li><strong>The Problem:</strong> Adult search relies on Title/Author. Kids don't remember those.</li>
+                        <li><strong>Research (Kidsteam):</strong> Kids search by <em>Visual Memory</em> (Blue book), <em>Length</em> (Short vs Long), and <em>Characters</em> (Animals vs People).</li>
                         <li><strong>Outcome:</strong> A visual search interface based on these categories was used 71% of the time compared to 10% for text search.</li>
                     </ul>
                 `
@@ -432,9 +446,9 @@
                 summary: "Airbnb vs CouchSurfing: Design shapes behavior.",
                 content: `
                     <h3>Definition</h3>
-                    <p>A social system operating on a technical base. Designers can't program people, but they can influence behavior through design choices.</p>
+                    <p>A "Socio-Technical System" is a social system operating on a technical base (e.g., Wikipedia, eBay). Designers cannot "program" people, but they can influence behavior through design choices.</p>
 
-                    <h3>Comparison</h3>
+                    <h3>Comparison Case Study</h3>
                     <table class="comparison-table">
                         <tr>
                             <th>Feature</th>
@@ -442,22 +456,57 @@
                             <th>CouchSurfing (Community)</th>
                         </tr>
                         <tr>
-                            <td><strong>Goal</strong></td>
-                            <td>Efficient Transactions</td>
-                            <td>Relationships & Sharing</td>
+                            <td><strong>Primary Goal</strong></td>
+                            <td>Efficient, safe transactions</td>
+                            <td>Relationships & Sharing experiences</td>
                         </tr>
                         <tr>
                             <td><strong>Focus</strong></td>
-                            <td>Property Features (Amenities)</td>
-                            <td>Host Identity (Stories)</td>
+                            <td>Property Features (Amenities, Price, Size)</td>
+                            <td>Host Identity (Stories, Interests, "Why I'm here")</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Location Info</strong></td>
+                            <td>Specific Address & Neighborhood context</td>
+                            <td>City-level only (Privacy focused to shift focus to person)</td>
                         </tr>
                         <tr>
                             <td><strong>Trust Source</strong></td>
                             <td>Photos of the Home</td>
-                            <td>Host's Profile/Reputation</td>
+                            <td>The Host's Reputation/Profile</td>
                         </tr>
                     </table>
                     <blockquote>Airbnb says "Find a place." CouchSurfing says "Find a person." Design determines the social dynamic.</blockquote>
+                `
+            },
+             {
+                title: "Complex Processes Made Simple",
+                summary: "TurboTax and StubHub case studies.",
+                content: `
+                    <h3>TurboTax: Making Taxes "Easy"</h3>
+                    <ul>
+                        <li><strong>Pain Point:</strong> Taxes are complex, requiring hours of form-filling. Average taxpayer spent 13 hours/year.</li>
+                        <li><strong>UI Innovations:</strong>
+                            <ul>
+                                <li><strong>Data Reuse:</strong> Imports last year's data and W-2s/1099s automatically.</li>
+                                <li><strong>Navigation:</strong> Offers "Guided Mode" (step-by-step questions) vs "Exploration Mode" (choose your own topic).</li>
+                                <li><strong>Feedback:</strong> Shows real-time refund ticker to build motivation and confidence.</li>
+                                <li><strong>Transparency:</strong> Built-in help and "Explain this" features.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>StubHub: Trust in Scalping</h3>
+                    <ul>
+                        <li><strong>Pain Point:</strong> Buying tickets from scalpers was shady, risky (counterfeits), and lacked price transparency.</li>
+                        <li><strong>UI Innovations:</strong>
+                            <ul>
+                                <li><strong>Visibility:</strong> Interactive stadium maps show exactly where the seat is.</li>
+                                <li><strong>Transparency:</strong> Real-time price comparison eliminates the "scalper's word." Buyers can see if a "deal" is real.</li>
+                                <li><strong>Intermediary:</strong> The software acts as the guarantor of trust, replacing the risky street transaction.</li>
+                            </ul>
+                        </li>
+                    </ul>
                 `
             }
         ],
@@ -468,30 +517,57 @@
                 content: `
                     <h3>The 3 Core Stages</h3>
                     <ol>
-                        <li><strong>User Research:</strong> Understand the problem. Capture user needs, skills, and contexts. Don't start with a solution; start with the user.</li>
-                        <li><strong>Design & Prototyping:</strong> Translate research into solutions. "Rapid sketches -> Refined prototypes." Iterate, don't aim for perfection immediately.</li>
-                        <li><strong>Evaluation:</strong> Test prototypes with users. Identify flaws. This cycle repeats.</li>
+                        <li><strong>User Research:</strong> Understand the problem. Capture user needs, skills, and contexts. Don't start with a solution; start with the user. Learn about tasks, limitations, and distractions.</li>
+                        <li><strong>Design & Prototyping:</strong> Translate research into solutions. "Rapid sketches -> Refined prototypes." Iterate, don't aim for perfection immediately. Prototyping is cheaper than building the wrong product.</li>
+                        <li><strong>Evaluation:</strong> Test prototypes with users. Identify flaws. Critiques come from self, experts, and users. This cycle repeats (Research -> Prototype -> Evaluate -> Refine).</li>
                     </ol>
+                    
+                    <h3>Problem Discovery Case Study: Substance Abuse Recovery</h3>
+                    <p><strong>Method:</strong> Participatory Observation. Researchers attended 132 meetings over 6 months.</p>
+                    <p><strong>Findings:</strong> Users valued <em>Anonymity</em> (equality) and <em>Face-to-face contact</em>. Technology should support, not replace, human connection.</p>
+                    <p><strong>Lesson:</strong> Don't ask "What app do you want?" Ask about challenges and values.</p>
 
-                    <h3>Task-Centered UI Design (TCUID)</h3>
-                    <p>A practical method focusing on specific tasks. Best for productivity tools (ATMs, Data Entry), but weak for "Experience" apps (Games, Social Feeds).</p>
+                    <h3>Solution Discovery Case Study: ShareTable</h3>
+                    <p><strong>Problem:</strong> Children don't like talking on the phone with distant parents. They bond through <em>shared activities</em>.</p>
+                    <p><strong>Solution:</strong> A system with a camera and projector that overlays the parent's table onto the child's table. They can read books, do homework, and play games together.</p>
                 `
             },
             {
-                title: "Artifacts: Tasks & Scenarios",
+                title: "Task-Centered UI Design (TCUID)",
+                summary: "A practical, engineering-based approach.",
+                content: `
+                    <h3>What is TCUID?</h3>
+                    <p>A structured process focusing on specific tasks users need to accomplish. It anchors design on <strong>Tasks</strong> and <strong>Scenarios</strong>.</p>
+
+                    <h3>Strengths & Weaknesses</h3>
+                    <ul>
+                        <li><strong>Strengths:</strong> Accessible to beginners. Highly effective for task-heavy tools (ATMs, Data Entry, E-commerce). Produces practical, usable interfaces quickly.</li>
+                        <li><strong>Weaknesses:</strong> Not suited for "Experience" or "Awareness" systems like social media feeds or games where there is no specific "task" to complete.</li>
+                    </ul>
+
+                    <h3>The Process in TCUID</h3>
+                    <p>Systems are explicitly designed to support and improve task completion. Evaluation involves comparative walkthroughs testing how different designs support the same task.</p>
+                `
+            },
+            {
+                title: "Artifacts: Tasks, Scenarios, Personas",
                 summary: "Defining the What and How of design.",
                 content: `
-                    <h3>1. Task Descriptions (The WHAT)</h3>
+                    <h3>1. Use Cases</h3>
+                    <p>Stories that motivate design. They convey the context and "why" the system matters. <br><em>Example:</em> "Ben, age 11, wants to buy a Lego set quickly before his brother sees."</p>
+
+                    <h3>2. Personas</h3>
+                    <p>Synthetic representative users derived from research data (not imagination). They represent clusters of user needs.</p>
+                    <ul>
+                         <li><strong>Example:</strong> "Sarah the Grad Student" (Price-conscious, Tech-savvy) vs "Larry the Retiree" (Tech-hesitant, needs phone support).</li>
+                         <li><strong>Value:</strong> Prevents designing for "everyone" (which usually means designing for no one).</li>
+                    </ul>
+
+                    <h3>3. Task Descriptions (The WHAT)</h3>
                     <p>High-level goals independent of the interface. <br><em>Good Example:</em> "Find a flight to SF for under $500." <br><em>Bad Example:</em> "Click the File menu." (Do not mention UI elements!)</p>
 
-                    <h3>2. Scenarios (The HOW)</h3>
+                    <h3>4. Scenarios (The HOW)</h3>
                     <p>Detailed step-by-step walkthroughs specific to a design. Used for evaluation. <br><em>Example:</em> "1. Open App. 2. Click Search. 3. Type SFO. 4. Sort by Price."</p>
-
-                    <h3>3. Use Cases</h3>
-                    <p>Stories that motivate design. "Ben wants to buy a gift quickly before his brother sees."</p>
-                    
-                    <h3>4. Personas</h3>
-                    <p>Synthetic users created from research clusters (e.g., "Sarah the Grad Student" vs "Larry the Retiree").</p>
                 `
             },
             {
@@ -500,16 +576,17 @@
                 content: `
                     <h3>Key Concepts</h3>
                     <ul>
-                        <li><strong>Intuition:</strong> Leveraging the designer's training/experience.</li>
-                        <li><strong>Dialogue:</strong> Users are partners, not just subjects.</li>
-                        <li><strong>Disruption:</strong> Challenging norms (e.g., Apple).</li>
+                        <li><strong>Intuition:</strong> Leveraging the designer's training/experience (years of studio practice).</li>
+                        <li><strong>Dialogue:</strong> Users are partners, not just subjects. Provocative interaction is encouraged.</li>
+                        <li><strong>Disruption:</strong> Deliberately challenging norms (e.g., Apple).</li>
+                        <li><strong>Critique:</strong> Structured expert evaluation of multiple alternatives.</li>
                     </ul>
 
                     <h3>Methods</h3>
                     <ul>
-                        <li><strong>Participatory Design (PD):</strong> Co-design workshops where users help build the solution (e.g., using Lego or paper).</li>
-                        <li><strong>Value Sensitive Design (VSD):</strong> Explicitly designing for values like privacy, fairness, and safety (e.g., Drones).</li>
-                        <li><strong>Cultural Probes:</strong> Sending kits (cameras, diaries) to users to inspire design ideas.</li>
+                        <li><strong>Participatory Design (PD):</strong> Co-design workshops where users help build the solution (e.g., Taco Bell workers designing their own POS system). Users are active partners.</li>
+                        <li><strong>Value Sensitive Design (VSD):</strong> Explicitly designing for values like privacy, fairness, and safety. (e.g., Drones: Convenience vs. Privacy). Identifying stakeholders (direct & indirect).</li>
+                        <li><strong>Cultural Probes:</strong> Sending creative kits (cameras, diaries, postcards) to users to capture their lives and inspire design ideas. Used to surface hidden values and emotions.</li>
                     </ul>
                 `
             },
@@ -518,13 +595,13 @@
                 summary: "Redesigning a live system.",
                 content: `
                     <h3>The Challenge</h3>
-                    <p>MovieLens 3 was outdated (15 years old) and cluttered. The core value (recommendations) was buried.</p>
+                    <p>MovieLens 3 was outdated (15 years old) and cluttered. The core value (recommendations) was buried under "New Releases" and unused features.</p>
 
-                    <h3>The Strategy</h3>
+                    <h3>The Redesign Strategy</h3>
                     <ul>
-                        <li><strong>Two-Track Upgrade:</strong> Kept the old site running while testing the new one.</li>
-                        <li><strong>Feature Reduction:</strong> Cut unused features to strengthen the core.</li>
-                        <li><strong>Data-Driven:</strong> Used logs to decide what to keep.</li>
+                        <li><strong>Two-Track Upgrade:</strong> Kept the old site running while testing the new one (MovieLens 4). Allowed a soft transition to minimize resistance.</li>
+                        <li><strong>Feature Reduction:</strong> Cut unused features to strengthen the core. "Simplification can strengthen the core user experience."</li>
+                        <li><strong>Data-Driven:</strong> Used logs and user feedback to decide what to keep.</li>
                     </ul>
                     <p><strong>Lesson:</strong> Even experts' intuitions are wrong. Iteration and safe testing are essential.</p>
                 `
@@ -545,11 +622,12 @@
                         <li><strong>W (Width):</strong> Size of target. (Smaller = Slower).</li>
                     </ul>
 
-                    <h3>Implications</h3>
+                    <h3>Implications for UI</h3>
                     <ul>
-                        <li><strong>Make targets BIGGER:</strong> Large buttons are faster to click.</li>
-                        <li><strong>Make targets CLOSER:</strong> Group related items (Bold/Italic/Underline).</li>
-                        <li><strong>Infinite Width:</strong> Screen edges (Mac Menu Bar) are infinitely easy to hit because you can't overshoot them.</li>
+                        <li><strong>Make targets BIGGER:</strong> Large buttons are faster to click (increases W).</li>
+                        <li><strong>Make targets CLOSER:</strong> Group related items (Bold/Italic/Underline) to reduce travel time (decreases A).</li>
+                        <li><strong>Infinite Width (Screen Edges):</strong> The edges of the screen (e.g., Mac Menu Bar) are infinitely easy to hit because the cursor cannot overshoot them.</li>
+                        <li><strong>Pop-up Menus:</strong> Right-click menus appear at the cursor, reducing 'A' to near zero.</li>
                     </ul>
                 `
             },
@@ -559,18 +637,21 @@
                 content: `
                     <h3>Memory Limits</h3>
                     <ul>
-                        <li><strong>Short Term (STM):</strong> Capacity is tiny (3-4 items). Don't make users remember data between screens.</li>
-                        <li><strong>Long Term (LTM):</strong> Requires structure and familiarity.</li>
+                        <li><strong>Short Term (STM):</strong> Capacity is tiny (3-4 items). Decays in seconds. <em>Design Rule:</em> Don't force users to remember data from one screen to the next.</li>
+                        <li><strong>Long Term (LTM):</strong> Huge capacity but slow to encode. Relies on structure and familiarity.</li>
                     </ul>
 
                     <h3>Attention</h3>
-                    <p>Attention is selective. (The Gorilla Experiment: People counting ball passes missed a gorilla walking by). Don't clutter interfaces; users will miss even "obvious" things.</p>
+                    <p>Attention is selective. (The Gorilla Experiment: People counting ball passes missed a gorilla walking by). Don't clutter interfaces; users will miss even "obvious" things if they are focused on a task.</p>
 
-                    <h3>Gestalt Principles</h3>
+                    <h3>Gestalt Principles (Perception)</h3>
                     <ul>
-                        <li><strong>Proximity:</strong> Things close together are grouped.</li>
-                        <li><strong>Similarity:</strong> Things that look alike act alike.</li>
-                        <li><strong>Closure:</strong> We fill in gaps in shapes.</li>
+                        <li><strong>Proximity:</strong> Things close together are perceived as a group.</li>
+                        <li><strong>Similarity:</strong> Things that look alike (color, shape) are perceived as related.</li>
+                        <li><strong>Closure:</strong> The brain "fills in" gaps to see complete shapes.</li>
+                        <li><strong>Continuity:</strong> The eye follows lines and curves.</li>
+                        <li><strong>Symmetry/Balance:</strong> People prefer symmetric, stable layouts.</li>
+                        <li><strong>Figure/Ground:</strong> Distinguishing the foreground from the background.</li>
                     </ul>
                 `
             },
@@ -580,16 +661,23 @@
                 content: `
                     <h3>Error Types</h3>
                     <ul>
-                        <li><strong>Slips:</strong> Right goal, wrong action (Typo). <em>Fix:</em> Undo, Auto-correct.</li>
-                        <li><strong>Mistakes:</strong> Wrong goal (Misunderstanding the system). <em>Fix:</em> Better visibility, clearer labels.</li>
+                        <li><strong>Slips (Action Errors):</strong> Right goal, wrong action. (e.g., Typo, clicking wrong button). <em>Fix:</em> Undo, Auto-correct, Spacing buttons.</li>
+                        <li><strong>Mistakes (Mental Model Errors):</strong> Wrong goal. The user misunderstood how the system works. (e.g., Putting oil in the tire valve). <em>Fix:</em> Better visibility, clearer labels, improved conceptual models.</li>
+                    </ul>
+
+                    <h3>Conceptual Models</h3>
+                    <p>User forms a mental model based on the "System Image" (what they see). Goal: Align User Model with Design Model.</p>
+                    <ul>
+                        <li><strong>Gulf of Execution:</strong> "How do I do it?" (Gap between goal and system).</li>
+                        <li><strong>Gulf of Evaluation:</strong> "What happened?" (Gap between system state and understanding).</li>
                     </ul>
 
                     <h3>Don Norman's Design Principles</h3>
                     <ol>
                         <li><strong>Visibility:</strong> Can I see what I can do? (Hidden gestures = Bad).</li>
-                        <li><strong>Feedback:</strong> Does the system react? (Loading bars, click sounds).</li>
-                        <li><strong>Constraints:</strong> Prevent errors by restricting invalid actions (Grayed out buttons).</li>
-                        <li><strong>Mapping:</strong> Natural relationship between control and effect (Stove knobs).</li>
+                        <li><strong>Feedback:</strong> Does the system react? (Loading bars, click sounds). Immediate and visible.</li>
+                        <li><strong>Constraints:</strong> Prevent errors by restricting invalid actions (Grayed out buttons, Date pickers).</li>
+                        <li><strong>Mapping:</strong> Natural relationship between control and effect (Stove knobs aligned with burners).</li>
                     </ol>
                 `
             }
@@ -600,13 +688,19 @@
                 summary: "Observations, Future Tech, and Automation.",
                 content: `
                     <h3>Observe, Don't Just Ask</h3>
-                    <p>Users often lie or don't know what they want. Watch for "hacks" (like taping instructions to a wall)—these reveal design failures.</p>
+                    <p>Users often lie or don't know what they want. Watch for "hacks" (like taping instructions to a wall)—these reveal design failures. Design for real people, not logical engineers.</p>
 
-                    <h3>Future of Design</h3>
-                    <ul>
-                        <li><strong>Generative Design:</strong> Designers will curate options generated by AI, shifting from "creator" to "conductor."</li>
-                        <li><strong>Automation Vigilance:</strong> Humans are bad at monitoring machines (e.g., self-driving cars). The danger is the "handoff" when the machine fails.</li>
-                    </ul>
+                    <h3>Iterative vs. Visionary Design</h3>
+                    <p>Both are needed. <br><strong>Iterative:</strong> Hill-climbing. Makes things better step-by-step (Usability Engineering). <br><strong>Visionary:</strong> Radical jumps (like the iPhone). Often initially flawed but transformative (Design-led).</p>
+
+                    <h3>The Future: Generative Design</h3>
+                    <p>Designers won't draw every line. They will set constraints and curate options generated by AI/ML algorithms. The role shifts from "creator" to "curator/conductor" of tools.</p>
+
+                    <h3>Automation & Vigilance</h3>
+                    <p>Regarding autonomous cars: The hard part isn't the driving; it's the <strong>handoff</strong>. Humans are terrible at "vigilance" (monitoring a machine). When the car fails, the human cannot react fast enough. Automation also changes human behavior (pedestrians expect cars to stop).</p>
+                    
+                    <h3>The Danger of "Wrong" Designers</h3>
+                    <p>Visual-only designers may create beautiful but unusable interfaces (e.g., hidden gestures). We need "Designer-Scientists" who understand cognition.</p>
                 `
             },
             {
@@ -615,11 +709,13 @@
                 content: `
                     <blockquote>"The fundamentals of human-centered design remain essential: observe, empathize, prototype, and make systems understandable."</blockquote>
                     <ul>
-                        <li><strong>Discoverability:</strong> Make actions perceptible.</li>
+                        <li><strong>Discoverability:</strong> Make possible actions clearly perceptible.</li>
+                        <li><strong>Feedback:</strong> Make system results visible and immediate.</li>
                         <li><strong>Affordances:</strong> Objects should signal how they are used (A chair affords sitting).</li>
                         <li><strong>Signifiers:</strong> Clues on where to touch/click (e.g., a "Push" sign).</li>
-                        <li><strong>Undo:</strong> Systems must be forgiving.</li>
-                        <li><strong>Consistency:</strong> Avoid inventing new interactions unless necessary.</li>
+                        <li><strong>Undo:</strong> Systems must be forgiving; easy to recover from mistakes.</li>
+                        <li><strong>Consistency:</strong> Avoid inventing new interactions unless absolutely necessary.</li>
+                        <li><strong>Constraints:</strong> Guide users and prevent errors.</li>
                     </ul>
                 `
             }
