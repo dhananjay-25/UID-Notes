@@ -512,98 +512,203 @@
         ],
         m2: [
             {
-                title: "The Design Process",
-                summary: "Research -> Prototype -> Evaluate.",
+                title: "1. The UI Design Process Overview",
+                summary: "Definitions, Characteristics, and Core Stages.",
                 content: `
-                    <h3>The 3 Core Stages</h3>
-                    <ol>
-                        <li><strong>User Research:</strong> Understand the problem. Capture user needs, skills, and contexts. Don't start with a solution; start with the user. Learn about tasks, limitations, and distractions.</li>
-                        <li><strong>Design & Prototyping:</strong> Translate research into solutions. "Rapid sketches -> Refined prototypes." Iterate, don't aim for perfection immediately. Prototyping is cheaper than building the wrong product.</li>
-                        <li><strong>Evaluation:</strong> Test prototypes with users. Identify flaws. Critiques come from self, experts, and users. This cycle repeats (Research -> Prototype -> Evaluate -> Refine).</li>
-                    </ol>
+                    <h3>What is a Design Process?</h3>
+                    <p>A systematic method for designing user interfaces. Its purpose is to increase success probability, incorporate best practices, and ensure users are involved.</p>
                     
-                    <h3>Problem Discovery Case Study: Substance Abuse Recovery</h3>
-                    <p><strong>Method:</strong> Participatory Observation. Researchers attended 132 meetings over 6 months.</p>
-                    <p><strong>Findings:</strong> Users valued <em>Anonymity</em> (equality) and <em>Face-to-face contact</em>. Technology should support, not replace, human connection.</p>
-                    <p><strong>Lesson:</strong> Don't ask "What app do you want?" Ask about challenges and values.</p>
-
-                    <h3>Solution Discovery Case Study: ShareTable</h3>
-                    <p><strong>Problem:</strong> Children don't like talking on the phone with distant parents. They bond through <em>shared activities</em>.</p>
-                    <p><strong>Solution:</strong> A system with a camera and projector that overlays the parent's table onto the child's table. They can read books, do homework, and play games together.</p>
-                `
-            },
-            {
-                title: "Task-Centered UI Design (TCUID)",
-                summary: "A practical, engineering-based approach.",
-                content: `
-                    <h3>What is TCUID?</h3>
-                    <p>A structured process focusing on specific tasks users need to accomplish. It anchors design on <strong>Tasks</strong> and <strong>Scenarios</strong>.</p>
-
-                    <h3>Strengths & Weaknesses</h3>
+                    <h3>Key Characteristics</h3>
                     <ul>
-                        <li><strong>Strengths:</strong> Accessible to beginners. Highly effective for task-heavy tools (ATMs, Data Entry, E-commerce). Produces practical, usable interfaces quickly.</li>
-                        <li><strong>Weaknesses:</strong> Not suited for "Experience" or "Awareness" systems like social media feeds or games where there is no specific "task" to complete.</li>
+                        <li><strong>User-Centered:</strong> Driven by user needs, involving real users throughout.</li>
+                        <li><strong>Iterative Design:</strong> You don't get it perfect the first time. Make a "first stab" -> Iterate -> Improve -> Re-test.</li>
                     </ul>
 
-                    <h3>The Process in TCUID</h3>
-                    <p>Systems are explicitly designed to support and improve task completion. Evaluation involves comparative walkthroughs testing how different designs support the same task.</p>
+                    <h3>Three Core Stages</h3>
+                    <ol>
+                        <li><strong>User Research:</strong> Understand the problem. Capture needs and behaviors.</li>
+                        <li><strong>Prototyping:</strong> Create draft solutions (Rapid sketches -> Refined prototypes).</li>
+                        <li><strong>Evaluation:</strong> Test with users. Identify flaws. Often reveals need for more research.</li>
+                    </ol>
                 `
             },
             {
-                title: "Artifacts: Tasks, Scenarios, Personas",
-                summary: "Defining the What and How of design.",
+                title: "2. Identifying the Right Problem",
+                summary: "Problem discovery strategies and Substance Abuse Recovery case study.",
+                content: `
+                    <h3>Why Find the Right Problem?</h3>
+                    <p>Many designs fail not because they are built poorly, but because they solve the wrong problem. Start with discovery, not solutions.</p>
+
+                    <h3>4 Key Questions</h3>
+                    <ol>
+                        <li>Who is the target audience?</li>
+                        <li>What challenges do they face?</li>
+                        <li>What strategies do they currently use? (Look for workarounds).</li>
+                        <li>What values shape their acceptance of technology?</li>
+                    </ol>
+
+                    <h3>Case Study: Substance Abuse Recovery</h3>
+                    <ul>
+                        <li><strong>Context:</strong> 12-step meetings (AA/NA). Researcher attended 132 meetings (Participatory Observation).</li>
+                        <li><strong>Values Discovered:</strong> <em>Anonymity</em> (Equality among members) and <em>Face-to-face contact</em> (Technology should support, not replace, connection).</li>
+                        <li><strong>Lesson:</strong> Don't ask "What app do you want?" Users are experts in their lives, not tech. Ask about challenges and values.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "3. Finding the Right Solution",
+                summary: "Designing when the problem is known. ShareTable case study.",
+                content: `
+                    <h3>Scenario</h3>
+                    <p>You know the problem, but not the solution form. <strong>Goal:</strong> Find the right solution.</p>
+                    
+                    <h3>3 Guiding Questions</h3>
+                    <ol>
+                        <li>What are the key challenges my solution must address?</li>
+                        <li>What are the range of possible design alternatives? (Don't commit too early).</li>
+                        <li>What constraints must the solution respect?</li>
+                    </ol>
+
+                    <h3>Case Study: ShareTable (Parent-Child Distance)</h3>
+                    <ul>
+                        <li><strong>Problem:</strong> Kids hate talking on the phone. They bond through <em>shared activities</em>.</li>
+                        <li><strong>Alternatives Explored:</strong> Tent projection, Desk lamp projector, Special cabinet.</li>
+                        <li><strong>Final Concept:</strong> A table with camera/projector overlay. "Doors" metaphor (Open doors to call).</li>
+                        <li><strong>Outcome:</strong> Enabled homework help and reading together.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "4. Iterative Improvement: MovieLens",
+                summary: "Redesigning an existing system with data and user feedback.",
+                content: `
+                    <h3>The Challenge</h3>
+                    <p>MovieLens 3 was outdated, cluttered, and buried its core value (recommendations) under "New Releases".</p>
+
+                    <h3>Redesign Strategy (MovieLens 4)</h3>
+                    <ul>
+                        <li><strong>Two-Track Upgrade:</strong> Kept old site running while testing the new one. Soft transition.</li>
+                        <li><strong>Feature Reduction:</strong> "Simplification can strengthen the core." Removed unused features.</li>
+                        <li><strong>Data-Driven:</strong> Used logs to prove "New Releases" wasn't the main draw.</li>
+                    </ul>
+
+                    <h3>Lessons</h3>
+                    <p>Iteration is essential. Even experts' intuitions are often wrong (Microsoft Ribbon example). Safe testing (beta branches) minimizes user revolt.</p>
+                `
+            },
+            {
+                title: "5. Common Elements of Design Processes",
+                summary: "Deep dive into Research, Prototyping, and Evaluation.",
+                content: `
+                    <h3>1. User Research</h3>
+                    <p>Gain deep understanding to justify decisions.</p>
+                    <ul>
+                        <li><strong>Methods:</strong> Generalizable knowledge (psychology), Usage logs (data), Direct User Contact (Interviews, Observation - Most Important).</li>
+                        <li><strong>Deliverables:</strong> Personas, Contextual insights.</li>
+                    </ul>
+
+                    <h3>2. Design & Prototyping</h3>
+                    <p>Translate research into specs. <strong>Principle:</strong> Prototypes are cheaper/safer than building the real system.</p>
+                    <ul>
+                        <li><strong>Fidelity:</strong> Sketch (Napkin) -> Wireframe -> Executable Prototype.</li>
+                    </ul>
+
+                    <h3>3. Evaluation</h3>
+                    <ul>
+                        <li><strong>Without Users:</strong> Walkthroughs, Checklists.</li>
+                        <li><strong>With Users:</strong> Usability testing (detect difficulties), Field evaluation (real-world use).</li>
+                    </ul>
+                `
+            },
+            {
+                title: "6. Usability Engineering & TCUID",
+                summary: "Task-Centered User Interface Design principles and applicability.",
+                content: `
+                    <h3>Usability Engineering</h3>
+                    <p>A systematic, engineering-based approach (Jakob Nielsen). Focus: Know the user -> Design -> Evaluate -> Iterate. Use standards/guidelines.</p>
+
+                    <h3>Task-Centered UI Design (TCUID)</h3>
+                    <p>Anchors everything on <strong>Tasks</strong> (What user wants to do) and <strong>Scenarios</strong> (How they do it).</p>
+                    <ul>
+                        <li><strong>Process:</strong> Research gathers tasks. Design supports tasks. Evaluation tests scenarios.</li>
+                        <li><strong>Strengths:</strong> Good for productivity tools (ATMs, Data Entry). Accessible to beginners.</li>
+                        <li><strong>Weaknesses:</strong> Bad for "Experience" apps (Games, Social Feeds) where there is no specific "task".</li>
+                    </ul>
+                `
+            },
+            {
+                title: "7. Design Artifacts",
+                summary: "Use Cases, Personas, Task Descriptions, and Scenarios.",
                 content: `
                     <h3>1. Use Cases</h3>
-                    <p>Stories that motivate design. They convey the context and "why" the system matters. <br><em>Example:</em> "Ben, age 11, wants to buy a Lego set quickly before his brother sees."</p>
+                    <p>Stories that motivate design. "Why does this matter?" <br><em>Example:</em> "Ben, 11, needs to buy a gift quickly before his brother sees."</p>
 
                     <h3>2. Personas</h3>
-                    <p>Synthetic representative users derived from research data (not imagination). They represent clusters of user needs.</p>
-                    <ul>
-                         <li><strong>Example:</strong> "Sarah the Grad Student" (Price-conscious, Tech-savvy) vs "Larry the Retiree" (Tech-hesitant, needs phone support).</li>
-                         <li><strong>Value:</strong> Prevents designing for "everyone" (which usually means designing for no one).</li>
-                    </ul>
+                    <p>Synthetic users from research data. Capture diversity. <br><em>Example:</em> "Sarah (Grad Student, Price-conscious)" vs "Larry (Retiree, Tech-hesitant)."</p>
 
                     <h3>3. Task Descriptions (The WHAT)</h3>
-                    <p>High-level goals independent of the interface. <br><em>Good Example:</em> "Find a flight to SF for under $500." <br><em>Bad Example:</em> "Click the File menu." (Do not mention UI elements!)</p>
+                    <p>High-level goals independent of interface. <br><em>Good:</em> "Find a flight to SF under $500." <br><em>Bad:</em> "Click the File menu."</p>
 
                     <h3>4. Scenarios (The HOW)</h3>
-                    <p>Detailed step-by-step walkthroughs specific to a design. Used for evaluation. <br><em>Example:</em> "1. Open App. 2. Click Search. 3. Type SFO. 4. Sort by Price."</p>
+                    <p>Detailed steps on a specific interface. Used for evaluation. <br><em>Example:</em> "1. Open App. 2. Click Search. 3. Filter by Price."</p>
                 `
             },
             {
-                title: "Design-Centered Approaches",
-                summary: "Participatory Design & Value Sensitive Design.",
+                title: "8. Design-Centered Approaches",
+                summary: "Intuition, Dialogue, and creative methods like Cultural Probes.",
                 content: `
                     <h3>Key Concepts</h3>
                     <ul>
-                        <li><strong>Intuition:</strong> Leveraging the designer's training/experience (years of studio practice).</li>
-                        <li><strong>Dialogue:</strong> Users are partners, not just subjects. Provocative interaction is encouraged.</li>
-                        <li><strong>Disruption:</strong> Deliberately challenging norms (e.g., Apple).</li>
-                        <li><strong>Critique:</strong> Structured expert evaluation of multiple alternatives.</li>
+                        <li><strong>Intuition:</strong> Leveraging designer experience/talent.</li>
+                        <li><strong>Dialogue:</strong> Users are partners, not subjects.</li>
+                        <li><strong>Disruption:</strong> Challenging norms (Apple).</li>
                     </ul>
 
                     <h3>Methods</h3>
                     <ul>
-                        <li><strong>Participatory Design (PD):</strong> Co-design workshops where users help build the solution (e.g., Taco Bell workers designing their own POS system). Users are active partners.</li>
-                        <li><strong>Value Sensitive Design (VSD):</strong> Explicitly designing for values like privacy, fairness, and safety. (e.g., Drones: Convenience vs. Privacy). Identifying stakeholders (direct & indirect).</li>
-                        <li><strong>Cultural Probes:</strong> Sending creative kits (cameras, diaries, postcards) to users to capture their lives and inspire design ideas. Used to surface hidden values and emotions.</li>
+                        <li><strong>Participatory Design (PD):</strong> Users co-design (workshops, Lego mockups). Example: Taco Bell workers designing POS.</li>
+                        <li><strong>Value Sensitive Design (VSD):</strong> Designing for moral values (Privacy, Fairness). Example: Drones.</li>
+                        <li><strong>Cultural Probes:</strong> Sending kits (cameras, diaries) to users to inspire design. Surfaces hidden values/emotions.</li>
                     </ul>
                 `
             },
             {
-                title: "Iteration: MovieLens Case Study",
-                summary: "Redesigning a live system.",
+                title: "9. Choosing the Right Process",
+                summary: "Selecting methods based on problem type, users, and team.",
                 content: `
-                    <h3>The Challenge</h3>
-                    <p>MovieLens 3 was outdated (15 years old) and cluttered. The core value (recommendations) was buried under "New Releases" and unused features.</p>
-
-                    <h3>The Redesign Strategy</h3>
+                    <h3>Factors to Consider</h3>
                     <ul>
-                        <li><strong>Two-Track Upgrade:</strong> Kept the old site running while testing the new one (MovieLens 4). Allowed a soft transition to minimize resistance.</li>
-                        <li><strong>Feature Reduction:</strong> Cut unused features to strengthen the core. "Simplification can strengthen the core user experience."</li>
-                        <li><strong>Data-Driven:</strong> Used logs and user feedback to decide what to keep.</li>
+                        <li><strong>Design Problem:</strong> New Design (Needs creativity/PD) vs Improvement (Needs TCUID/Iteration).</li>
+                        <li><strong>User Base:</strong> Broad (General tools) vs Specific (Specialized work). Engagement level?</li>
+                        <li><strong>Constraints:</strong> Legal rights (Worker inclusion), System type (Task vs Experience).</li>
+                        <li><strong>Team:</strong> Expert Designers (Intuition/Design-Centered) vs Engineers (Structured/TCUID).</li>
                     </ul>
-                    <p><strong>Lesson:</strong> Even experts' intuitions are wrong. Iteration and safe testing are essential.</p>
+                `
+            },
+            {
+                title: "10. Writing Good Tasks & Scenarios",
+                summary: "Criteria and training examples (Shopping, Watch, Calendar).",
+                content: `
+                    <h3>Good Task Description</h3>
+                    <ul>
+                        <li>Complete and representative goal.</li>
+                        <li>Includes context (User, Goal, Constraints).</li>
+                        <li><strong>NO Solution Details:</strong> Never mention "Click," "Menu," or specific buttons.</li>
+                    </ul>
+
+                    <h3>Good Scenario</h3>
+                    <ul>
+                        <li>Step-by-step instructions.</li>
+                        <li>Interface-specific (mentions buttons/menus).</li>
+                        <li>Clear and concrete actions.</li>
+                    </ul>
+
+                    <h3>Training Examples</h3>
+                    <ul>
+                        <li><strong>Shopping:</strong> Task = "Find cheapest remote." Scenario = "Search 'remote', Sort Low-to-High."</li>
+                        <li><strong>Smart Watch:</strong> Task = "Stop vibration at night." Scenario = "Settings -> Quiet Time -> 10PM-6AM."</li>
+                        <li><strong>Google Calendar:</strong> Task = "Count meeting minutes." Scenario = "Open Agenda View -> Sum durations."</li>
+                    </ul>
                 `
             }
         ],
