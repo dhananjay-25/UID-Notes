@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UID Course: Complete Study Dashboard</title>
+    <style>
+        /* CORE VARIABLES & RESET */
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* HEADER SECTION */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: -0.05em; font-weight: 700; }
+        header p { margin-top: 0.5rem; opacity: 0.8; font-size: 1.1rem; }
+
+        /* NAVIGATION TABS */
+        .nav-wrapper {
+            background: var(--surface);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            padding: 0 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            border-radius: 99px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-tab:hover { background: var(--bg); color: var(--primary); }
+        .nav-tab.active { background: var(--primary); color: white; box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3); }
+
+        /* MAIN LAYOUT */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            min-height: 80vh;
+        }
+
+        .module-view {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .module-view.active { display: grid; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* CARD COMPONENT */
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-m1 { background: #dbeafe; color: #1e40af; }
+        .tag-m2 { background: #dcfce7; color: #166534; }
+        .tag-m3 { background: #fce7f3; color: #9d174d; }
+        .tag-m4 { background: #ffedd5; color: #9a3412; }
+
+        .card h3 { margin: 0 0 0.75rem 0; font-size: 1.35rem; color: var(--secondary); padding-right: 2rem; }
+        .card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .btn-study {
+            background: var(--surface);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-study:hover { background: var(--primary); color: white; }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: var(--surface);
+            width: 100%;
+            max-width: 900px;
+            height: 85vh;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 { margin: 0; color: var(--secondary); font-size: 1.5rem; }
+        
+        .close-btn {
+            background: none; border: none; font-size: 2rem; color: var(--text-light);
+            cursor: pointer; transition: color 0.2s; line-height: 1;
+        }
+        .close-btn:hover { color: var(--secondary); }
+
+        .modal-body {
+            padding: 2.5rem;
+            overflow-y: auto;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        /* Typography for Notes Content */
+        .modal-body h3 { color: var(--primary); font-size: 1.4rem; margin-top: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+        .modal-body h4 { color: var(--secondary); margin-top: 1.5rem; font-size: 1.15rem; }
+        .modal-body ul, .modal-body ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .modal-body li { margin-bottom: 0.5rem; }
+        .modal-body strong { color: var(--secondary); font-weight: 700; }
+        
+        .modal-body blockquote {
+            border-left: 5px solid var(--accent);
+            background: #fffbeb;
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            font-style: italic;
+            color: #92400e;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .comparison-table th { background: var(--secondary); color: white; padding: 1rem; text-align: left; }
+        .comparison-table td { border: 1px solid var(--border); padding: 0.75rem; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+
+        .citation {
+            font-size: 0.75em;
+            color: #94a3b8;
+            vertical-align: super;
+            margin-left: 4px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>User Interface Design</h1>
+    <p>Comprehensive Study Dashboard | Modules 1 - 4</p>
+</header>
+
+<div class="nav-wrapper">
+    <nav>
+        <button class="nav-tab active" onclick="switchTab('m1')">Module 1: Intro & Cases</button>
+        <button class="nav-tab" onclick="switchTab('m2')">Module 2: Processes</button>
+        <button class="nav-tab" onclick="switchTab('m3')">Module 3: Psychology</button>
+        <button class="nav-tab" onclick="switchTab('m4')">Module 4: Don Norman</button>
+    </nav>
+</div>
+
+<!-- MODULE 1 CONTAINER -->
+<main id="m1" class="module-view active"></main>
+
+<!-- MODULE 2 CONTAINER -->
+<main id="m2" class="module-view"></main>
+
+<!-- MODULE 3 CONTAINER -->
+<main id="m3" class="module-view"></main>
+
+<!-- MODULE 4 CONTAINER -->
+<main id="m4" class="module-view"></main>
+
+<!-- MODAL COMPONENT -->
+<div class="modal-overlay" id="noteModal">
+    <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2 id="modalTitle">Topic Title</h2>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Dynamic Content Loaded Here -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==========================================
+    // DATA STORE: FULL CONTENT FROM 84 PAGES
+    // ==========================================
+    const courseData = {
+        m1: [
+            {
+                title: "Intro to UI Design",
+                summary: "Historical context, definitions, and why UI matters.",
+                content: `
+                    <h3>What is User Interface (UI) Design?</h3>
+                    <p>The goal of UI design is to reduce "clunkiness" and enhance fluidity. When successful, users forget they are using a computer and simply get tasks done.</p>
+                    
+                    <h3>Historical Context</h3>
+                    <ul>
+                        <li><strong>Early Computing:</strong> Machines were expensive (millions/month), humans were cheap. The goal was to keep the machine busy. Efficiency > User Experience.</li>
+                        <li><strong>Modern Shift:</strong> Devices are personal. Usability is critical. Poor UI leads to financial disaster and safety risks.</li>
+                    </ul>
+
+                    <h3>UI Design vs. CS</h3>
+                    <ul>
+                        <li><strong>CS Courses:</strong> Focus on "building software right" (efficiency, modularity, code).</li>
+                        <li><strong>UI Courses:</strong> Focus on "building the right software" (solving user problems).</li>
+                    </ul>
+
+                    <h3>Interdisciplinary Nature</h3>
+                    <p>UI draws from Psychology (human behavior), Design (graphics/industrial), and Engineering. <br><strong>Warning:</strong> Designers are not their users. You cannot guess; you must research.</p>
+                `
+            },
+            {
+                title: "Hall of Shame (Failures)",
+                summary: "Case studies: Waze, Therac-25, and Chrysler.",
+                content: `
+                    <h3>Why Bad Design Matters</h3>
+                    <p>Poor UI is not just annoying; it can cause injury, death, and financial loss.</p>
+
+                    <h3>1. Waze & The Wrong Address</h3>
+                    <ul>
+                        <li><strong>Incident:</strong> An elderly couple in Brazil entered a duplicate street name. Waze routed them to a dangerous area where they were attacked.</li>
+                        <li><strong>Design Failure:</strong> Lack of context or "safety warnings" for high-risk destinations.</li>
+                        <li><strong>Lesson:</strong> <em>Heuristic #5: Error Prevention.</em> Systems should warn users of potential risks before they commit to an action.</li>
+                    </ul>
+
+                    <h3>2. Therac-25 Radiation Machine</h3>
+                    <ul>
+                        <li><strong>Incident:</strong> A software bug caused massive radiation overdoses, killing 6 people.</li>
+                        <li><strong>Failures:</strong> Cryptic error messages ("Malfunction 54"), no visibility of the actual dose delivered, and a lack of hardware interlocks.</li>
+                        <li><strong>Lesson:</strong> Never rely on software alone for safety. Visibility of system state is life-saving.</li>
+                    </ul>
+
+                    <h3>3. Chrysler Gear Shift</h3>
+                    <ul>
+                        <li><strong>Incident:</strong> Actor Anton Yelchin died when his Jeep rolled away.</li>
+                        <li><strong>Failure:</strong> The "Monostable" shifter always returned to the center. It relied only on lights to show "Park" vs "Neutral," lacking tactile feedback.</li>
+                        <li><strong>Lesson:</strong> Do not break established conventions (like gear positions) without extreme caution.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Hall of Fame (Success)",
+                summary: "Case studies: ATMs, Microsoft Ribbon, ICDL.",
+                content: `
+                    <h3>1. The Evolution of ATMs</h3>
+                    <ul>
+                        <li><strong>The Problem:</strong> Early ATMs "swallowed" cards on error. Users were terrified of losing their cards.</li>
+                        <li><strong>The Innovation:</strong> Citibank introduced the "Dip" interface. You dip the card and pull it back. The machine never holds it.</li>
+                        <li><strong>Result:</strong> "The Citi Never Sleeps" campaign. Trust skyrocketed because the design removed fear.</li>
+                    </ul>
+
+                    <h3>2. Microsoft Office Ribbon</h3>
+                    <ul>
+                        <li><strong>The Problem:</strong> Menus were too deep. Users couldn't find features.</li>
+                        <li><strong>Data-Driven Design:</strong> Analysis showed "Paste" was used 11% of the time, followed by Save, Copy, Undo, Bold.</li>
+                        <li><strong>The Solution:</strong> The "Paste" button was made huge. Design was based on <em>evidence</em>, not intuition.</li>
+                    </ul>
+
+                    <h3>3. International Children's Digital Library</h3>
+                    <ul>
+                        <li><strong>Insight:</strong> Kids don't search by Title/Author. They search by <em>Color</em> (Blue book), <em>Length</em> (Short), and <em>Characters</em> (Animals).</li>
+                        <li><strong>Outcome:</strong> A visual search interface based on these categories was used 71% of the time compared to 10% for text search.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Socio-Technical Systems",
+                summary: "Airbnb vs CouchSurfing: Design shapes behavior.",
+                content: `
+                    <h3>Definition</h3>
+                    <p>A social system operating on a technical base. Designers can't program people, but they can influence behavior through design choices.</p>
+
+                    <h3>Comparison</h3>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Feature</th>
+                            <th>Airbnb (Marketplace)</th>
+                            <th>CouchSurfing (Community)</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Goal</strong></td>
+                            <td>Efficient Transactions</td>
+                            <td>Relationships & Sharing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Focus</strong></td>
+                            <td>Property Features (Amenities)</td>
+                            <td>Host Identity (Stories)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trust Source</strong></td>
+                            <td>Photos of the Home</td>
+                            <td>Host's Profile/Reputation</td>
+                        </tr>
+                    </table>
+                    <blockquote>Airbnb says "Find a place." CouchSurfing says "Find a person." Design determines the social dynamic.</blockquote>
+                `
+            }
+        ],
+        m2: [
+            {
+                title: "The Design Process",
+                summary: "Research -> Prototype -> Evaluate.",
+                content: `
+                    <h3>The 3 Core Stages</h3>
+                    <ol>
+                        <li><strong>User Research:</strong> Understand the problem. Capture user needs, skills, and contexts. Don't start with a solution; start with the user.</li>
+                        <li><strong>Design & Prototyping:</strong> Translate research into solutions. "Rapid sketches -> Refined prototypes." Iterate, don't aim for perfection immediately.</li>
+                        <li><strong>Evaluation:</strong> Test prototypes with users. Identify flaws. This cycle repeats.</li>
+                    </ol>
+
+                    <h3>Task-Centered UI Design (TCUID)</h3>
+                    <p>A practical method focusing on specific tasks. Best for productivity tools (ATMs, Data Entry), but weak for "Experience" apps (Games, Social Feeds).</p>
+                `
+            },
+            {
+                title: "Artifacts: Tasks & Scenarios",
+                summary: "Defining the What and How of design.",
+                content: `
+                    <h3>1. Task Descriptions (The WHAT)</h3>
+                    <p>High-level goals independent of the interface. <br><em>Good Example:</em> "Find a flight to SF for under $500." <br><em>Bad Example:</em> "Click the File menu." (Do not mention UI elements!)</p>
+
+                    <h3>2. Scenarios (The HOW)</h3>
+                    <p>Detailed step-by-step walkthroughs specific to a design. Used for evaluation. <br><em>Example:</em> "1. Open App. 2. Click Search. 3. Type SFO. 4. Sort by Price."</p>
+
+                    <h3>3. Use Cases</h3>
+                    <p>Stories that motivate design. "Ben wants to buy a gift quickly before his brother sees."</p>
+                    
+                    <h3>4. Personas</h3>
+                    <p>Synthetic users created from research clusters (e.g., "Sarah the Grad Student" vs "Larry the Retiree").</p>
+                `
+            },
+            {
+                title: "Design-Centered Approaches",
+                summary: "Participatory Design & Value Sensitive Design.",
+                content: `
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li><strong>Intuition:</strong> Leveraging the designer's training/experience.</li>
+                        <li><strong>Dialogue:</strong> Users are partners, not just subjects.</li>
+                        <li><strong>Disruption:</strong> Challenging norms (e.g., Apple).</li>
+                    </ul>
+
+                    <h3>Methods</h3>
+                    <ul>
+                        <li><strong>Participatory Design (PD):</strong> Co-design workshops where users help build the solution (e.g., using Lego or paper).</li>
+                        <li><strong>Value Sensitive Design (VSD):</strong> Explicitly designing for values like privacy, fairness, and safety (e.g., Drones).</li>
+                        <li><strong>Cultural Probes:</strong> Sending kits (cameras, diaries) to users to inspire design ideas.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Iteration: MovieLens Case Study",
+                summary: "Redesigning a live system.",
+                content: `
+                    <h3>The Challenge</h3>
+                    <p>MovieLens 3 was outdated (15 years old) and cluttered. The core value (recommendations) was buried.</p>
+
+                    <h3>The Strategy</h3>
+                    <ul>
+                        <li><strong>Two-Track Upgrade:</strong> Kept the old site running while testing the new one.</li>
+                        <li><strong>Feature Reduction:</strong> Cut unused features to strengthen the core.</li>
+                        <li><strong>Data-Driven:</strong> Used logs to decide what to keep.</li>
+                    </ul>
+                    <p><strong>Lesson:</strong> Even experts' intuitions are wrong. Iteration and safe testing are essential.</p>
+                `
+            }
+        ],
+        m3: [
+            {
+                title: "Fitts' Law",
+                summary: "The math of pointing speed.",
+                content: `
+                    <h3>The Formula</h3>
+                    <p style="font-size: 1.2rem; background: #eee; padding: 1rem; text-align: center; border-radius: 8px;">
+                        T = a + b * log<sub>2</sub>(A/W + 1)
+                    </p>
+                    <ul>
+                        <li><strong>T:</strong> Time to complete movement.</li>
+                        <li><strong>A (Amplitude):</strong> Distance to target. (Further = Slower).</li>
+                        <li><strong>W (Width):</strong> Size of target. (Smaller = Slower).</li>
+                    </ul>
+
+                    <h3>Implications</h3>
+                    <ul>
+                        <li><strong>Make targets BIGGER:</strong> Large buttons are faster to click.</li>
+                        <li><strong>Make targets CLOSER:</strong> Group related items (Bold/Italic/Underline).</li>
+                        <li><strong>Infinite Width:</strong> Screen edges (Mac Menu Bar) are infinitely easy to hit because you can't overshoot them.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Psychology & Perception",
+                summary: "Memory, Attention, and Gestalt Principles.",
+                content: `
+                    <h3>Memory Limits</h3>
+                    <ul>
+                        <li><strong>Short Term (STM):</strong> Capacity is tiny (3-4 items). Don't make users remember data between screens.</li>
+                        <li><strong>Long Term (LTM):</strong> Requires structure and familiarity.</li>
+                    </ul>
+
+                    <h3>Attention</h3>
+                    <p>Attention is selective. (The Gorilla Experiment: People counting ball passes missed a gorilla walking by). Don't clutter interfaces; users will miss even "obvious" things.</p>
+
+                    <h3>Gestalt Principles</h3>
+                    <ul>
+                        <li><strong>Proximity:</strong> Things close together are grouped.</li>
+                        <li><strong>Similarity:</strong> Things that look alike act alike.</li>
+                        <li><strong>Closure:</strong> We fill in gaps in shapes.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Errors & Norman's Principles",
+                summary: "Slips vs Mistakes & The 4 Pillars.",
+                content: `
+                    <h3>Error Types</h3>
+                    <ul>
+                        <li><strong>Slips:</strong> Right goal, wrong action (Typo). <em>Fix:</em> Undo, Auto-correct.</li>
+                        <li><strong>Mistakes:</strong> Wrong goal (Misunderstanding the system). <em>Fix:</em> Better visibility, clearer labels.</li>
+                    </ul>
+
+                    <h3>Don Norman's Design Principles</h3>
+                    <ol>
+                        <li><strong>Visibility:</strong> Can I see what I can do? (Hidden gestures = Bad).</li>
+                        <li><strong>Feedback:</strong> Does the system react? (Loading bars, click sounds).</li>
+                        <li><strong>Constraints:</strong> Prevent errors by restricting invalid actions (Grayed out buttons).</li>
+                        <li><strong>Mapping:</strong> Natural relationship between control and effect (Stove knobs).</li>
+                    </ol>
+                `
+            }
+        ],
+        m4: [
+            {
+                title: "Don Norman Interview",
+                summary: "Observations, Future Tech, and Automation.",
+                content: `
+                    <h3>Observe, Don't Just Ask</h3>
+                    <p>Users often lie or don't know what they want. Watch for "hacks" (like taping instructions to a wall)—these reveal design failures.</p>
+
+                    <h3>Future of Design</h3>
+                    <ul>
+                        <li><strong>Generative Design:</strong> Designers will curate options generated by AI, shifting from "creator" to "conductor."</li>
+                        <li><strong>Automation Vigilance:</strong> Humans are bad at monitoring machines (e.g., self-driving cars). The danger is the "handoff" when the machine fails.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Design Commandments",
+                summary: "The rules to live by.",
+                content: `
+                    <blockquote>"The fundamentals of human-centered design remain essential: observe, empathize, prototype, and make systems understandable."</blockquote>
+                    <ul>
+                        <li><strong>Discoverability:</strong> Make actions perceptible.</li>
+                        <li><strong>Affordances:</strong> Objects should signal how they are used (A chair affords sitting).</li>
+                        <li><strong>Signifiers:</strong> Clues on where to touch/click (e.g., a "Push" sign).</li>
+                        <li><strong>Undo:</strong> Systems must be forgiving.</li>
+                        <li><strong>Consistency:</strong> Avoid inventing new interactions unless necessary.</li>
+                    </ul>
+                `
+            }
+        ]
+    };
+
+    // ==========================================
+    // LOGIC
+    // ==========================================
+    const modalOverlay = document.getElementById('noteModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    // RENDER MODULES
+    function render() {
+        Object.keys(courseData).forEach(key => {
+            const container = document.getElementById(key);
+            let html = '';
+            courseData[key].forEach((item, index) => {
+                html += `
+                    <div class="card">
+                        <span class="card-tag tag-${key}">${key.toUpperCase()} Topic</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.summary}</p>
+                        <button class="btn-study" onclick="openModal('${key}', ${index})">
+                            Open Study Notes
+                        </button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        });
+    }
+
+    // TAB SWITCHING
+    window.switchTab = function(moduleId) {
+        // Active Tab UI
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        // Active Module View
+        document.querySelectorAll('.module-view').forEach(m => m.classList.remove('active'));
+        document.getElementById(moduleId).classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo(0,0);
+    }
+
+    // MODAL FUNCTIONS
+    window.openModal = function(key, index) {
+        const item = courseData[key][index];
+        modalTitle.innerText = item.title;
+        modalBody.innerHTML = item.content;
+        modalOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    window.closeModal = function() {
+        modalOverlay.classList.remove('open');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close on click outside
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Initialize
+    render();
+
+</script>
+</body>
+</html>
